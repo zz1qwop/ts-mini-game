@@ -22,7 +22,11 @@ const initial = [
   'ㅎ',
 ];
 
-function Form() {
+type FormProps = {
+  handleWordList: React.Dispatch<React.SetStateAction<string[]>>;
+};
+
+function Form({ handleWordList }: FormProps) {
   const [word, setWord] = useState<string[]>([
     initial[Math.floor(Math.random() * initial.length)],
     initial[Math.floor(Math.random() * initial.length)],
@@ -58,7 +62,7 @@ function Form() {
     console.log(first, second);
     if (initial[first] === word[0] && initial[second] === word[1]) {
       // wordlist에 단어 추가
-      // 구현 필요
+      handleWordList((prev) => [...prev, userWord.join('')]);
 
       setUserword(['', '']);
     }
