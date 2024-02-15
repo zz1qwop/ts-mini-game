@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 const initial = [
   'ㄱ',
@@ -35,17 +35,26 @@ function Form({ handleWordList, handleCount }: FormProps) {
 
   const [userWord, setUserword] = useState<string[]>(['', '']);
 
+  const firstWord = useRef<HTMLInputElement>(null);
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     if (name === 'first') {
-      setUserword([value, userWord[1]]);
+      if (value.length > 1) {
+        setUserword([value[0], userWord[1]]);
+      } else {
+        setUserword([value, userWord[1]]);
+      }
     } else {
-      setUserword([userWord[0], value]);
+      if (value.length > 1) {
+        setUserword([userWord[0], value[0]]);
+      } else {
+        setUserword([userWord[0], value]);
+      }
     }
   };
   const handleSubmit = () => {
     // 초성이 맞으면 제출 성공, 아니면 동작 없음
-
     // 단어가 입력되지 않았을 때 ('' or 초성만 있을 때) 제출 X
     if (
       userWord[0] === '' ||
@@ -64,6 +73,7 @@ function Form({ handleWordList, handleCount }: FormProps) {
       handleWordList((prev) => [...prev, userWord.join('')]);
       setUserword(['', '']);
       handleCount((prev) => prev + 1);
+      firstWord.current!.focus();
     }
   };
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -83,6 +93,7 @@ function Form({ handleWordList, handleCount }: FormProps) {
           value={userWord[0]}
           onChange={onChange}
           onKeyDown={handleEnter}
+          ref={firstWord}
         />
         <input
           type="text"
