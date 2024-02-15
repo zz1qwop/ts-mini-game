@@ -23,7 +23,13 @@ function App() {
         handleCount={setCount}
       />
       <WordList wordList={wordList} handleWordList={setWordList} />
-      {flag === 'end' && <End />}
+      {flag === 'end' && (
+        <End
+          wordList={wordList}
+          handleWordList={setWordList}
+          handleFlag={setFlag}
+        />
+      )}
     </div>
   );
 }
