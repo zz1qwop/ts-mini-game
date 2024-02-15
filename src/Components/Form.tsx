@@ -24,9 +24,10 @@ const initial = [
 
 type FormProps = {
   handleWordList: React.Dispatch<React.SetStateAction<string[]>>;
+  handleCount: React.Dispatch<React.SetStateAction<number>>;
 };
 
-function Form({ handleWordList }: FormProps) {
+function Form({ handleWordList, handleCount }: FormProps) {
   const [word, setWord] = useState<string[]>([
     initial[Math.floor(Math.random() * initial.length)],
     initial[Math.floor(Math.random() * initial.length)],
@@ -59,12 +60,10 @@ function Form({ handleWordList }: FormProps) {
     const first = Math.trunc((userWord[0].charCodeAt(0) - ga) / 588);
     const second = Math.trunc((userWord[1].charCodeAt(0) - ga) / 588);
 
-    console.log(first, second);
     if (initial[first] === word[0] && initial[second] === word[1]) {
-      // wordlist에 단어 추가
       handleWordList((prev) => [...prev, userWord.join('')]);
-
       setUserword(['', '']);
+      handleCount((prev) => prev + 1);
     }
   };
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
