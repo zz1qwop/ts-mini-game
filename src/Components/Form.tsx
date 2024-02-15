@@ -23,18 +23,19 @@ const initial = [
 ];
 
 type FormProps = {
+  wordList: string[];
   handleWordList: React.Dispatch<React.SetStateAction<string[]>>;
   handleCount: React.Dispatch<React.SetStateAction<number>>;
 };
 
-function Form({ handleWordList, handleCount }: FormProps) {
+function Form({ wordList, handleWordList, handleCount }: FormProps) {
   const [word, setWord] = useState<string[]>([
     initial[Math.floor(Math.random() * initial.length)],
     initial[Math.floor(Math.random() * initial.length)],
   ]);
 
   const [userWord, setUserword] = useState<string[]>(['', '']);
-
+  const [info, setInfo] = useState<string>('');
   const firstWord = useRef<HTMLInputElement>(null);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,6 +65,15 @@ function Form({ handleWordList, handleCount }: FormProps) {
     ) {
       return;
     }
+    // 이미 입력된 단어일 경우 초기화하고 제출 X
+    if (wordList.includes(userWord.join(''))) {
+      setUserword(['', '']);
+      setInfo('이미 입력된 단어입니다.');
+      setTimeout(() => {
+        setInfo('');
+      }, 1000);
+      return;
+    }
 
     const ga = 44032; // "가"의 유니코드
     const first = Math.trunc((userWord[0].charCodeAt(0) - ga) / 588);
@@ -76,13 +86,15 @@ function Form({ handleWordList, handleCount }: FormProps) {
       firstWord.current!.focus();
     }
   };
+
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSubmit();
     }
   };
+
   return (
-    <>
+    <div className="flex flex-col justify-center items-center">
       <div>{word}</div>
       <form action="submit" className="flex justify-center items-center">
         <input
@@ -105,7 +117,8 @@ function Form({ handleWordList, handleCount }: FormProps) {
           onKeyDown={handleEnter}
         />
       </form>
-    </>
+      <p>{info}</p>
+    </div>
   );
 }
 

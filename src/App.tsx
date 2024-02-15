@@ -17,7 +17,11 @@ function App() {
       {flag === 'start' && <Start handleFlag={setFlag} />}
       <div className="font-bold text-4xl">초성 게임</div>
       {flag === 'game' && <Timer count={count} handleFlag={setFlag} />}
-      <Form handleWordList={setWordList} handleCount={setCount} />
+      <Form
+        wordList={wordList}
+        handleWordList={setWordList}
+        handleCount={setCount}
+      />
       <WordList wordList={wordList} handleWordList={setWordList} />
       {flag === 'end' && <End />}
     </div>
