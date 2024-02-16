@@ -1,26 +1,5 @@
 import React, { useRef, useState } from 'react';
-
-const initial = [
-  'ㄱ',
-  'ㄲ',
-  'ㄴ',
-  'ㄷ',
-  'ㄸ',
-  'ㄹ',
-  'ㅁ',
-  'ㅂ',
-  'ㅃ',
-  'ㅅ',
-  'ㅆ',
-  'ㅇ',
-  'ㅈ',
-  'ㅉ',
-  'ㅊ',
-  'ㅋ',
-  'ㅌ',
-  'ㅍ',
-  'ㅎ',
-];
+import { useInitial } from '../context/InitialContext';
 
 type FormProps = {
   wordList: string[];
@@ -29,10 +8,7 @@ type FormProps = {
 };
 
 function Form({ wordList, handleWordList, handleCount }: FormProps) {
-  const [word, setWord] = useState<string[]>([
-    initial[Math.floor(Math.random() * initial.length)],
-    initial[Math.floor(Math.random() * initial.length)],
-  ]);
+  const { initial, word } = useInitial();
 
   const [userWord, setUserword] = useState<string[]>(['', '']);
   const [info, setInfo] = useState<string>('');
