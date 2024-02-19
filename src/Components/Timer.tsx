@@ -32,7 +32,7 @@ function Timer({ count, handleFlag }: TimerProps) {
 
   return (
     <div className="h-1/6 flex justify-center items-center">
-      <p className="font-bold text-2xl">{time}</p>
+      <p className="font-bold text-4xl text-slate-700">{time}</p>
     </div>
   );
 }

@@ -70,12 +70,14 @@ function Form({ wordList, handleWordList, handleCount }: FormProps) {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div>{word}</div>
+    <div className="h-2/6 flex flex-col justify-center items-center">
+      <div className="mb-4 text-3xl font-bold bg-slate-700 text-white ">
+        {word}
+      </div>
       <form action="submit" className="flex justify-center items-center">
         <input
           type="text"
-          className="w-20 h-20 bg-gray-200 mr-1.5"
+          className="w-20 h-20 bg-gray-200 mr-1.5 text-center"
           placeholder={word[0]}
           name="first"
           value={userWord[0]}
@@ -85,7 +87,7 @@ function Form({ wordList, handleWordList, handleCount }: FormProps) {
         />
         <input
           type="text"
-          className="w-20 h-20 bg-gray-200"
+          className="w-20 h-20 bg-gray-200 text-center"
           placeholder={word[1]}
           name="second"
           value={userWord[1]}

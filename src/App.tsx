@@ -13,9 +13,11 @@ function App() {
   const [flag, setFlag] = useState<Mode>('start');
   const [wordList, setWordList] = useState<string[]>([]);
   return (
-    <div className="bg-white w-3/5 h-3/4 rounded absolute flex flex-col justify-around items-center">
+    <div className="bg-white w-3/5 h-3/4 pt-4 pb-4 rounded absolute flex flex-col justify-around items-center">
       {flag === 'start' && <Start handleFlag={setFlag} />}
-      <div className="font-bold text-4xl">초성 게임</div>
+      <div className="p-2 font-bold text-4xl bg-slate-700 text-white text-center">
+        초성 게임
+      </div>
       {flag === 'game' && <Timer count={count} handleFlag={setFlag} />}
       <Form
         wordList={wordList}

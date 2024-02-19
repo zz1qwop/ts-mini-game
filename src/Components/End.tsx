@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiOutlineUndo } from 'react-icons/ai';
 
 type Mode = 'start' | 'game' | 'end';
 
@@ -10,18 +11,22 @@ type EndProps = {
 
 function End({ wordList, handleWordList, handleFlag }: EndProps) {
   return (
-    <div className="absolute w-full h-full bg-slate-400 opacity-90 flex flex-col justify-center items-center">
-      <h2 className="text-3xl font-bold text-white">End</h2>
+    <div className="absolute w-full h-full rounded bg-slate-100 flex flex-col justify-around items-center">
+      <h2 className="text-4xl font-bold text-slate-700">END</h2>
       <div>
-        <p>작성한 단어 개수는 {wordList.length}개 입니다!</p>
+        <p className="font-bold text-slate-700">
+          작성한 단어 개수는 {wordList.length}개 입니다!
+        </p>
       </div>
       <button
         onClick={(e) => {
           handleFlag('start');
           handleWordList([]);
         }}
+        className="flex items-center p-2 text-3xl font-bold bg-slate-700 text-white text-center"
       >
-        다시 시작하기
+        <AiOutlineUndo />
+        <p className="pl-2">다시 시작하기</p>
       </button>
     </div>
   );

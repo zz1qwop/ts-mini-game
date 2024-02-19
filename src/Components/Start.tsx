@@ -1,5 +1,10 @@
 import React from 'react';
 import { useInitial } from '../context/InitialContext';
+import {
+  AiOutlineUndo,
+  AiOutlineDoubleLeft,
+  AiOutlineDoubleRight,
+} from 'react-icons/ai';
 
 type Mode = 'start' | 'game' | 'end';
 
@@ -17,19 +22,30 @@ function Start({ handleFlag }: StartProps) {
     ]);
   };
   return (
-    <div className="absolute w-full h-full bg-slate-400 opacity-90 flex flex-col justify-center items-center">
+    <div className="absolute w-full h-full rounded bg-slate-100 flex flex-col justify-around items-center">
+      <div className="flex flex-col items-center">
+        <p className="mb-2 text-4xl font-bold text-slate-700">제시된 초성</p>
+        <p className="mb-2 text-4xl font-bold bg-slate-700 text-white w-full text-center">
+          {word}
+        </p>
+        <button
+          className="text-slate-500 flex items-center"
+          onClick={handleClick}
+        >
+          <AiOutlineUndo />
+          <p className="pl-2">초성 바꾸기</p>
+        </button>
+      </div>
       <button
         onClick={(e) => {
           handleFlag('game');
         }}
-        className="text-3xl font-bold text-white border-black"
+        className="flex items-center font-bold text-slate-700"
       >
-        start
+        <AiOutlineDoubleRight className="w-8 h-8" />
+        <p className="text-3xl">START</p>
+        <AiOutlineDoubleLeft className="w-8 h-8" />
       </button>
-      <div className="text-center">
-        <p>{word}</p>
-        <button onClick={handleClick}>초성 바꾸기</button>
-      </div>
     </div>
   );
 }
