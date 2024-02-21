@@ -5,6 +5,7 @@ import WordList from './Components/WordList';
 import Timer from './Components/Timer';
 import Start from './Components/Start';
 import End from './Components/End';
+import { useInitial } from './context/InitialContext';
 
 type Mode = 'start' | 'game' | 'end';
 
@@ -12,11 +13,13 @@ function App() {
   const [count, setCount] = useState<number>(0);
   const [flag, setFlag] = useState<Mode>('start');
   const [wordList, setWordList] = useState<string[]>([]);
+  const { word } = useInitial();
+
   return (
-    <div className="bg-white w-3/5 h-3/4 pt-4 pb-4 rounded absolute flex flex-col justify-around items-center">
+    <div className="bg-slate-50 w-full sm:w-3/5 h-3/4 pt-4 pb-4 sm:rounded absolute flex flex-col justify-around items-center">
       {flag === 'start' && <Start handleFlag={setFlag} />}
-      <div className="p-2 font-bold text-4xl bg-slate-700 text-white text-center">
-        초성 게임
+      <div className="mt-8 p-2 w-5/6 font-bold text-4xl bg-slate-700 text-white text-center">
+        {word}
       </div>
       {flag === 'game' && <Timer count={count} handleFlag={setFlag} />}
       <Form

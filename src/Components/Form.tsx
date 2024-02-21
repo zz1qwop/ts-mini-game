@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useInitial } from '../context/InitialContext';
 
 type FormProps = {
@@ -13,6 +13,10 @@ function Form({ wordList, handleWordList, handleCount }: FormProps) {
   const [userWord, setUserword] = useState<string[]>(['', '']);
   const [info, setInfo] = useState<string>('');
   const firstWord = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    firstWord.current!.focus();
+  }, []);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -70,14 +74,14 @@ function Form({ wordList, handleWordList, handleCount }: FormProps) {
   };
 
   return (
-    <div className="h-2/6 flex flex-col justify-center items-center">
-      <div className="mb-4 text-3xl font-bold bg-slate-700 text-white ">
-        {word}
-      </div>
+    <div className="flex flex-col justify-center items-center">
+      <p className="mt-2 h-5 text-xs text-slate-700">
+        Enter를 누르면 단어가 제출됩니다.
+      </p>
       <form action="submit" className="flex justify-center items-center">
         <input
           type="text"
-          className="w-20 h-20 bg-gray-200 mr-1.5 text-center"
+          className="w-24 h-24 bg-gray-200 mr-1.5 text-center"
           placeholder={word[0]}
           name="first"
           value={userWord[0]}
@@ -87,7 +91,7 @@ function Form({ wordList, handleWordList, handleCount }: FormProps) {
         />
         <input
           type="text"
-          className="w-20 h-20 bg-gray-200 text-center"
+          className="w-24 h-24 bg-gray-200 text-center"
           placeholder={word[1]}
           name="second"
           value={userWord[1]}
@@ -95,7 +99,7 @@ function Form({ wordList, handleWordList, handleCount }: FormProps) {
           onKeyDown={handleEnter}
         />
       </form>
-      <p>{info}</p>
+      <p className="mt-2 h-5 text-xs text-slate-700">{info}</p>
     </div>
   );
 }

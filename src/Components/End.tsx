@@ -11,12 +11,23 @@ type EndProps = {
 
 function End({ wordList, handleWordList, handleFlag }: EndProps) {
   return (
-    <div className="absolute w-full h-full rounded bg-slate-100 flex flex-col justify-around items-center">
+    <div className="absolute w-full h-full sm:rounded bg-slate-50 flex flex-col justify-around items-center">
       <h2 className="text-4xl font-bold text-slate-700">END</h2>
-      <div>
-        <p className="font-bold text-slate-700">
-          작성한 단어 개수는 {wordList.length}개 입니다!
-        </p>
+      <div className="w-5/6 flex flex-col items-center">
+        <div className="flex font-bold text-xl text-slate-700">
+          작성한 단어 개수는&nbsp;
+          <span className="bg-slate-700 text-white">
+            {wordList.length}개
+          </span>{' '}
+          &nbsp;입니다!
+        </div>
+        <div className="mt-4 flex flex-wrap justify-center items-center">
+          {wordList.map((word, idx) => (
+            <p key={idx} className="m-1 font-bold text-slate-700">
+              {word}
+            </p>
+          ))}
+        </div>
       </div>
       <button
         onClick={(e) => {
