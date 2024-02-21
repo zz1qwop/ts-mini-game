@@ -16,7 +16,7 @@ function End({ wordList, handleWordList, handleFlag }: EndProps) {
       <div className="w-5/6 flex flex-col items-center">
         <div className="flex font-bold text-xl text-slate-700">
           작성한 단어 개수는&nbsp;
-          <span className="bg-slate-700 text-white">
+          <span className="bg-slate-700 pl-1 pr-1 text-white">
             {wordList.length}개
           </span>{' '}
           &nbsp;입니다!

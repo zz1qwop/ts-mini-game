@@ -52,6 +52,7 @@ function Form({ wordList, handleWordList, handleCount }: FormProps) {
       setTimeout(() => {
         setInfo('');
       }, 1000);
+      firstWord.current!.focus();
       return;
     }
 

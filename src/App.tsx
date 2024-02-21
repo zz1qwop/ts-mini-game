@@ -22,12 +22,16 @@ function App() {
         {word}
       </div>
       {flag === 'game' && <Timer count={count} handleFlag={setFlag} />}
-      <Form
-        wordList={wordList}
-        handleWordList={setWordList}
-        handleCount={setCount}
-      />
-      <WordList wordList={wordList} handleWordList={setWordList} />
+      {flag === 'game' && (
+        <Form
+          wordList={wordList}
+          handleWordList={setWordList}
+          handleCount={setCount}
+        />
+      )}
+      {flag === 'game' && (
+        <WordList wordList={wordList} handleWordList={setWordList} />
+      )}
       {flag === 'end' && (
         <End
           wordList={wordList}
