@@ -5,9 +5,17 @@ type FormProps = {
   wordList: string[];
   handleWordList: React.Dispatch<React.SetStateAction<string[]>>;
   handleCount: React.Dispatch<React.SetStateAction<number>>;
+  time: number;
+  defaultTime: number;
 };
 
-function Form({ wordList, handleWordList, handleCount }: FormProps) {
+function Form({
+  wordList,
+  handleWordList,
+  handleCount,
+  time,
+  defaultTime,
+}: FormProps) {
   const { initial, word } = useInitial();
 
   const [userWord, setUserword] = useState<string[]>(['', '']);
@@ -61,6 +69,21 @@ function Form({ wordList, handleWordList, handleCount }: FormProps) {
     const second = Math.trunc((userWord[1].charCodeAt(0) - ga) / 588);
 
     if (initial[first] === word[0] && initial[second] === word[1]) {
+      let grade;
+      if (time >= defaultTime * 0.75) {
+        grade = 'perfect';
+      } else if (time >= defaultTime * 0.5) {
+        grade = 'great';
+      } else if (time >= defaultTime * 0.25) {
+        grade = 'good';
+      } else {
+        grade = 'nice';
+      }
+      setInfo(grade);
+      setTimeout(() => {
+        setInfo('');
+      }, 1500);
+
       handleWordList((prev) => [...prev, userWord.join('')]);
       setUserword(['', '']);
       handleCount((prev) => prev + 1);

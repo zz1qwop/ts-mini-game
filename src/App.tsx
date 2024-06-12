@@ -15,18 +15,32 @@ function App() {
   const [wordList, setWordList] = useState<string[]>([]);
   const { word } = useInitial();
 
+  // Timer
+  const DEFAULT_TIME = 8;
+  const [time, setTime] = useState<number>(DEFAULT_TIME);
+
   return (
     <div className="bg-slate-50 w-full sm:w-3/5 h-3/4 pt-4 pb-4 sm:rounded absolute flex flex-col justify-around items-center">
       {flag === 'start' && <Start handleFlag={setFlag} />}
       <div className="mt-8 p-2 w-5/6 font-bold text-4xl bg-slate-700 text-white text-center">
         {word}
       </div>
-      {flag === 'game' && <Timer count={count} handleFlag={setFlag} />}
+      {flag === 'game' && (
+        <Timer
+          count={count}
+          handleFlag={setFlag}
+          time={time}
+          handleTime={setTime}
+          defaultTime={DEFAULT_TIME}
+        />
+      )}
       {flag === 'game' && (
         <Form
           wordList={wordList}
           handleWordList={setWordList}
           handleCount={setCount}
+          time={time}
+          defaultTime={DEFAULT_TIME}
         />
       )}
       {flag === 'game' && (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { LuClock3, LuClock6, LuClock9, LuClock12 } from 'react-icons/lu';
 
 type Mode = 'start' | 'game' | 'end';
@@ -6,15 +6,21 @@ type Mode = 'start' | 'game' | 'end';
 type TimerProps = {
   count: number;
   handleFlag: React.Dispatch<React.SetStateAction<Mode>>;
+  time: number;
+  handleTime: React.Dispatch<React.SetStateAction<number>>;
+  defaultTime: number;
 };
 
-function Timer({ count, handleFlag }: TimerProps) {
-  const DEFAULT_TIME = 8;
-  const [time, setTime] = useState<number>(DEFAULT_TIME);
-
+function Timer({
+  count,
+  handleFlag,
+  time,
+  handleTime,
+  defaultTime,
+}: TimerProps) {
   useEffect(() => {
     const timerId = setInterval(() => {
-      setTime((prev) => prev - 1);
+      handleTime((prev) => prev - 1);
     }, 1000);
 
     if (time <= 0) {
@@ -26,11 +32,11 @@ function Timer({ count, handleFlag }: TimerProps) {
     return () => {
       clearInterval(timerId);
     };
-  }, [time, handleFlag]);
+  }, [time, handleFlag, handleTime]);
 
   useEffect(() => {
-    setTime(DEFAULT_TIME);
-  }, [count]);
+    handleTime(defaultTime);
+  }, [count, handleTime, defaultTime]);
 
   return (
     <div className="w-2/5 flex justify-around items-center text-4xl font-bold text-slate-700">
