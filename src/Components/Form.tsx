@@ -7,6 +7,7 @@ type FormProps = {
   handleCount: React.Dispatch<React.SetStateAction<number>>;
   time: number;
   defaultTime: number;
+  handleWordGrade: React.Dispatch<React.SetStateAction<string[][]>>;
 };
 
 function Form({
@@ -15,6 +16,7 @@ function Form({
   handleCount,
   time,
   defaultTime,
+  handleWordGrade,
 }: FormProps) {
   const { initial, word } = useInitial();
 
@@ -69,7 +71,7 @@ function Form({
     const second = Math.trunc((userWord[1].charCodeAt(0) - ga) / 588);
 
     if (initial[first] === word[0] && initial[second] === word[1]) {
-      let grade;
+      let grade = '';
       if (time >= defaultTime * 0.75) {
         grade = 'perfect';
       } else if (time >= defaultTime * 0.5) {
@@ -84,6 +86,7 @@ function Form({
         setInfo('');
       }, 1500);
 
+      handleWordGrade((prev) => [...prev, [grade, userWord.join('')]]);
       handleWordList((prev) => [...prev, userWord.join('')]);
       setUserword(['', '']);
       handleCount((prev) => prev + 1);

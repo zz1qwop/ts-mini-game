@@ -19,6 +19,9 @@ function App() {
   const DEFAULT_TIME = 8;
   const [time, setTime] = useState<number>(DEFAULT_TIME);
 
+  // Grade
+  const [wordGrade, setWordGrade] = useState<string[][]>([]);
+
   return (
     <div className="bg-slate-50 w-full sm:w-3/5 h-3/4 pt-4 pb-4 sm:rounded absolute flex flex-col justify-around items-center">
       {flag === 'start' && <Start handleFlag={setFlag} />}
@@ -41,6 +44,7 @@ function App() {
           handleCount={setCount}
           time={time}
           defaultTime={DEFAULT_TIME}
+          handleWordGrade={setWordGrade}
         />
       )}
       {flag === 'game' && (
@@ -51,6 +55,7 @@ function App() {
           wordList={wordList}
           handleWordList={setWordList}
           handleFlag={setFlag}
+          wordGrade={wordGrade}
         />
       )}
     </div>
