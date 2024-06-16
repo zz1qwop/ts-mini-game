@@ -26,12 +26,12 @@ function Start({ handleFlag }: StartProps) {
     <div className="absolute w-full h-full sm:rounded bg-slate-50 flex flex-col items-center">
       <div className="flex flex-col h-full justify-around items-center">
         <div className="flex flex-col justify-around items-center">
-          <div className="flex mb-2 items-center text-4xl font-bold text-slate-700">
+          <div className="flex mb-2 items-center text-4xl font-bold text-slate-800">
             <AiFillStar className="text-2xl mr-2" />
             초성 게임
             <AiFillStar className="text-2xl ml-2" />
           </div>
-          <p className="mb-2 text-4xl font-bold bg-slate-700 text-white w-full text-center">
+          <p className="mb-2 text-4xl font-bold bg-slate-800 text-white w-full text-center">
             {word}
           </p>
           <button
@@ -47,7 +47,7 @@ function Start({ handleFlag }: StartProps) {
           onClick={(e) => {
             handleFlag('game');
           }}
-          className="w-full flex justify-between items-center font-bold text-slate-700"
+          className="w-full flex justify-between items-center font-bold text-slate-800"
         >
           <AiOutlineDoubleRight className="w-8 h-8" />
           <p className="text-3xl">START</p>

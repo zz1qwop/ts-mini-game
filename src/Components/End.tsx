@@ -31,10 +31,10 @@ function End({ wordList, handleWordList, handleFlag, wordGrade }: EndProps) {
     nice: string;
   };
   const gradeColor: ColorType = {
-    perfect: '#CD1818',
-    great: '#4E3636',
-    good: '#321E1E',
-    nice: '#116D6E',
+    perfect: '#FF8BA0',
+    great: '#ECB365',
+    good: '#67895a',
+    nice: '#064663',
   };
   const data = {
     labels: ['perfect', 'great', 'good', 'nice'],
@@ -89,7 +89,7 @@ function End({ wordList, handleWordList, handleFlag, wordGrade }: EndProps) {
 
   return (
     <div className="absolute w-full h-full sm:rounded bg-slate-50 flex flex-col justify-around items-center">
-      <h2 className="text-4xl font-bold text-slate-700">END</h2>
+      <h2 className="text-4xl font-bold text-slate-800">END</h2>
       <div className="w-5/6 flex flex-col items-center">
         <div className="w-full h-60 flex justify-center">
           <Pie
@@ -102,13 +102,13 @@ function End({ wordList, handleWordList, handleFlag, wordGrade }: EndProps) {
         </div>
         <div
           ref={wordRef}
-          className="font-bold mt-4 h-8 flex flex-wrap justify-center items-center"
+          className="font-bold text-slate-500 mt-4 h-8 flex flex-wrap justify-center items-center"
         >
           그래프를 클릭하면 이곳에 해당하는 단어가 나타납니다.
         </div>
-        <div className="flex font-bold text-xl text-slate-700 mt-2">
+        <div className="flex font-bold text-xl text-slate-800 mt-2">
           작성한 단어 개수는&nbsp;
-          <span className="bg-slate-700 pl-1 pr-1 text-white">
+          <span className="bg-slate-800 pl-1 pr-1 text-white">
             {wordList.length}개
           </span>{' '}
           &nbsp;입니다!
@@ -119,7 +119,7 @@ function End({ wordList, handleWordList, handleFlag, wordGrade }: EndProps) {
           handleFlag('start');
           handleWordList([]);
         }}
-        className="flex items-center p-2 text-3xl font-bold bg-slate-700 text-white text-center"
+        className="flex items-center p-2 text-3xl font-bold bg-slate-800 text-white text-center"
       >
         <AiOutlineUndo />
         <p className="pl-2">다시 시작하기</p>

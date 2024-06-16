@@ -102,7 +102,7 @@ function Form({
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <p className="mt-2 h-5 text-xs text-slate-700">
+      <p className="mt-2 h-5 text-xs text-slate-800">
         Enter를 누르면 단어가 제출됩니다.
       </p>
       <form action="submit" className="flex justify-center items-center">
@@ -126,7 +126,7 @@ function Form({
           onKeyDown={handleEnter}
         />
       </form>
-      <p className="mt-2 h-5 text-xs text-slate-700">{info}</p>
+      <p className="mt-2 h-5 text-xs text-slate-800">{info}</p>
     </div>
   );
 }
