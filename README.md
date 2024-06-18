@@ -27,12 +27,27 @@ React, TypeScript, Tailwind CSS 사용
 <br/>
 
 ![다른 초성 입력](https://github.com/zz1qwop/ts-mini-game/assets/84325395/fb59d7e0-b8af-4628-a989-1ae2f9ffa10c)
+#### 2-4. (추가) 제출 시간에 따라 등급 부여하기
+- 단어를 제출하는 시간에 따라 등급을 부여합니다.
+- 등급은 perfect, great, good, nice로 구성되어 있습니다.
+- 단어를 제출했을 때 하단에 등급 알림이 떴다가 사라집니다.
+<br/>
+
+![단어 등급 알림](https://github.com/zz1qwop/ts-mini-game/assets/84325395/1a830f0d-4577-41fa-9184-10a02c21cfea)
 ### 3. 시간 초과 시 게임 종료
 - 시간이 초과되면 게임이 자동으로 종료되며 end 페이지로 이동합니다.
 - 지금까지 작성한 단어를 확인할 수 있으며 다시 시작하기 버튼을 눌러 start 페이지로 이동할 수 있습니다.
 <br/>
 
 ![게임 종료](https://github.com/zz1qwop/ts-mini-game/assets/84325395/915d94ba-70ef-47a2-b62d-2d3a857106ea)
+#### 3-2. 게임 종료 페이지 개선 - 차트로 보여주기
+- chart.js를 사용하여 end 페이지에 파이 차트를 추가했습니다.
+- 등급 별로 항목들이 나누어지고, 파이 차트의 항목을 클릭했을 경우 해당 등급에 해당하는 단어들을 보여줍니다.
+<br/>
+
+
+![end 페이지 차트](https://github.com/zz1qwop/ts-mini-game/assets/84325395/2c1eea46-2808-4a31-b610-385b2bb9f525)
+
 
 ---
 
