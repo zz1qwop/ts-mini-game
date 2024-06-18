@@ -12,9 +12,20 @@ type EndProps = {
   handleWordList: React.Dispatch<React.SetStateAction<string[]>>;
   handleFlag: React.Dispatch<React.SetStateAction<Mode>>;
   wordGrade: string[][];
+  handleWordGrade: React.Dispatch<React.SetStateAction<string[][]>>;
+  handleTime: React.Dispatch<React.SetStateAction<number>>;
+  defaultTime: number;
 };
 
-function End({ wordList, handleWordList, handleFlag, wordGrade }: EndProps) {
+function End({
+  wordList,
+  handleWordList,
+  handleFlag,
+  wordGrade,
+  handleWordGrade,
+  handleTime,
+  defaultTime,
+}: EndProps) {
   const selectWords = (grade: string) => {
     return wordGrade.filter((wordArray) => wordArray[0] === grade);
   };
@@ -118,6 +129,8 @@ function End({ wordList, handleWordList, handleFlag, wordGrade }: EndProps) {
         onClick={(e) => {
           handleFlag('start');
           handleWordList([]);
+          handleWordGrade([]);
+          handleTime(defaultTime);
         }}
         className="flex items-center p-2 text-3xl font-bold bg-slate-800 text-white text-center"
       >
